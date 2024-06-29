@@ -1,0 +1,31 @@
+<head></head>
+<body>
+  <h2>form</h2>
+  <form>
+    <label for="">email</label>
+    <input type="email" id="email" />
+    <label for="">phone</label>
+    <input type="phone" id="phone" />
+    <button
+      type="button"
+      onClick="
+        setCookie();
+        window.location.href='thanks.html'
+        "
+    >
+      submit
+    </button>
+  </form>
+</body>
+
+<script>
+  function setCookie() {
+    const email = document.getElementById("email").value;
+    document.cookie = "email=" + email;
+    // console.log("adsf", email);
+    const phone = document.getElementById("phone").value;
+    document.cookie = "phone=" + phone;
+    console.log(document.cookie);
+  }
+  //   console.log(document.cookie);
+</script>
