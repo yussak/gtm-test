@@ -1,34 +1,3 @@
-<script>
-  function resetCookies() {
-    // document.cookie=""だと全部消えてしまうので注意
-    document.cookie = "email=; max-age=0; path=/";
-    document.cookie = "phone=; max-age=0; path=/";
-  }
-
-  // TODO:送信後cookie reset
-  console.log("a", document.cookie);
-  const emailCookie = document.cookie
-    .split(";")
-    .find((row) => row.trim().startsWith("email="))
-    ?.split("=")[1];
-
-  const phoneCookie = document.cookie
-    .split(";")
-    .find((row) => row.trim().startsWith("phone="))
-    ?.split("=")[1];
-
-  console.log(emailCookie, phoneCookie);
-
-  window.dataLayer = window.dataLayer || [];
-  dataLayer.push({
-    email: emailCookie,
-    phone: phoneCookie,
-  });
-
-  resetCookies();
-  console.log(window.dataLayer);
-</script>
-
 <head>
   <!-- Google Tag Manager -->
   <script>
@@ -59,3 +28,34 @@
   <!-- End Google Tag Manager (noscript) -->
   <h2>thanks</h2>
 </body>
+
+<!-- cookieの値をemail, phoneそれぞれで取得してdataLayer.pushし、cookie削除する -->
+<script>
+  function resetCookies() {
+    // document.cookie=""だと全部消えてしまうので注意
+    document.cookie = "email=; max-age=0; path=/";
+    document.cookie = "phone=; max-age=0; path=/";
+  }
+
+  // console.log(document.cookie);
+  const emailCookie = document.cookie
+    .split(";")
+    .find((row) => row.trim().startsWith("email="))
+    ?.split("=")[1];
+
+  const phoneCookie = document.cookie
+    .split(";")
+    .find((row) => row.trim().startsWith("phone="))
+    ?.split("=")[1];
+
+  // console.log(emailCookie, phoneCookie);
+
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({
+    email: emailCookie,
+    phone: phoneCookie,
+  });
+
+  resetCookies();
+  // console.log(window.dataLayer);
+</script>
