@@ -1,9 +1,58 @@
-<head> </head>
-
-<body>
-  <h2>thanks</h2>
-</body>
-
 <script>
   console.log(document.cookie);
+  //   const emailCookie = document.cookie
+  //     .split(";")
+  //     .find((row) => row.startsWith("email="))
+  //     ?.split("=")[1];
+  //   const phoneCookie = document.cookie
+  //     .split(";")
+  //     .find((row) => row.startsWith("phone="))
+  //     ?.split("=")[1];
+  const emailCookie = document.cookie
+    .split(";")
+    .find((row) => row.trim().startsWith("email="))
+    ?.split("=")[1];
+
+  const phoneCookie = document.cookie
+    .split(";")
+    .find((row) => row.trim().startsWith("phone="))
+    ?.split("=")[1];
+  console.log(emailCookie, phoneCookie);
+  window.dataLayer = window.dataLayer || [];
+  dataLayer.push({
+    email: emailCookie,
+    phone: phoneCookie,
+  });
+  console.log(window.dataLayer);
 </script>
+
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-KCK548J7");
+  </script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript
+    ><iframe
+      src="https://www.googletagmanager.com/ns.html?id=GTM-KCK548J7"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+    ></iframe
+  ></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <h2>thanks</h2>
+</body>
