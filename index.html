@@ -34,6 +34,7 @@
     <button
       type="button"
       onClick="
+        resetCookies();
         setCookie();
         window.location.href='thanks.html'
         "
@@ -44,14 +45,19 @@
 </body>
 
 <script>
+  // cookieリセット
+  function resetCookies() {
+    // document.cookie=""だと全部消えてしまうので注意
+    document.cookie = "email=; max-age=0; path=/";
+    document.cookie = "phone=; max-age=0; path=/";
+  }
+
   function setCookie() {
     const email = document.getElementById("email").value;
-    document.cookie = "email=" + email;
+    document.cookie = "email=" + email + "; max-age=180; path=/";
 
     const phone = document.getElementById("phone").value;
-    document.cookie = "phone=" + phone;
-
-    // console.log(document.cookie);
+    document.cookie = "phone=" + phone + "; max-age=180; path=/";
   }
-  //   console.log(document.cookie);
+  console.log(document.cookie);
 </script>

@@ -1,25 +1,32 @@
 <script>
-  // console.log(document.cookie);
+  function resetCookies() {
+    // document.cookie=""だと全部消えてしまうので注意
+    document.cookie = "email=; max-age=0; path=/";
+    document.cookie = "phone=; max-age=0; path=/";
+  }
+
+  // TODO:送信後cookie reset
+  console.log("a", document.cookie);
   const emailCookie = document.cookie
     .split(";")
-    .find((row) => row.startsWith("email="))
+    .find((row) => row.trim().startsWith("email="))
     ?.split("=")[1];
 
-  // " phone=" と半角スペースが入っているのでtrimしている
   const phoneCookie = document.cookie
     .split(";")
-    .find((row) => row.startsWith(" phone="))
-    // .find((row) => row.trim().startsWith("phone="))
+    .find((row) => row.trim().startsWith("phone="))
     ?.split("=")[1];
 
-  // console.log(emailCookie, phoneCookie);
+  console.log(emailCookie, phoneCookie);
 
   window.dataLayer = window.dataLayer || [];
   dataLayer.push({
     email: emailCookie,
     phone: phoneCookie,
   });
-  // console.log(window.dataLayer);
+
+  resetCookies();
+  console.log(window.dataLayer);
 </script>
 
 <head>
