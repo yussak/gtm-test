@@ -1,29 +1,25 @@
 <script>
-  console.log(document.cookie);
-  //   const emailCookie = document.cookie
-  //     .split(";")
-  //     .find((row) => row.startsWith("email="))
-  //     ?.split("=")[1];
-  //   const phoneCookie = document.cookie
-  //     .split(";")
-  //     .find((row) => row.startsWith("phone="))
-  //     ?.split("=")[1];
+  // console.log(document.cookie);
   const emailCookie = document.cookie
     .split(";")
-    .find((row) => row.trim().startsWith("email="))
+    .find((row) => row.startsWith("email="))
     ?.split("=")[1];
 
+  // " phone=" と半角スペースが入っているのでtrimしている
   const phoneCookie = document.cookie
     .split(";")
-    .find((row) => row.trim().startsWith("phone="))
+    .find((row) => row.startsWith(" phone="))
+    // .find((row) => row.trim().startsWith("phone="))
     ?.split("=")[1];
-  console.log(emailCookie, phoneCookie);
+
+  // console.log(emailCookie, phoneCookie);
+
   window.dataLayer = window.dataLayer || [];
   dataLayer.push({
     email: emailCookie,
     phone: phoneCookie,
   });
-  console.log(window.dataLayer);
+  // console.log(window.dataLayer);
 </script>
 
 <head>
